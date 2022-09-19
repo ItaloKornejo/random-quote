@@ -3,17 +3,13 @@ import './App.css'
 import quotes from './json/quotes.json'
 import QuoteBox from './components/QuoteBox'
 
-
 function App() {
   const [count, setCount] = useState(0)
   const getIndexRandom = arr => Math.floor(Math.random() * arr.length)
-  // const getRandomColor = () => Math.floor(Math.random()*16777215).toString(16)
   const getRandomColor = () => `hsl(${getRandomHSL(0,360)},${getRandomHSL(0,70)}%,${getRandomHSL(0,65)}%)`
-
 
   const firstElement =quotes[getIndexRandom(quotes)]
   const firstColor = getRandomColor()
-
 
   const [randomQuote,setRandomQuote] = useState(firstElement)
   const [randomColor,setRandomColor] = useState(firstColor)
@@ -28,20 +24,19 @@ function App() {
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min) + min)
   }
-  
 
   const backgorundObject = {
     backgroundColor : randomColor
   }
 
-
-
   return (
     <div className="App" style={backgorundObject}>
+      <div className='transition'></div>
       <QuoteBox 
         randomQuote={randomQuote}
         randomColor={randomColor}
         getRandomAll={getRandomAll}
+        setRandomColor={setRandomColor}
       />
     </div>
   )

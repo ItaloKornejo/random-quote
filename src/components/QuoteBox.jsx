@@ -21,7 +21,7 @@ const QuoteBox = ({randomQuote,randomColor,getRandomAll}) => {
         <div className='nextIcon'>
             <a onClick={getRandomAll} >
                 <i style={backgroundObj} className='bx bxs-chevron-right' ></i>
-            </a>
+            </a> 
         </div>
     </article>
   )
