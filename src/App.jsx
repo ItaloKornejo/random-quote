@@ -4,7 +4,8 @@ import quotes from './json/quotes.json'
 import QuoteBox from './components/QuoteBox'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isDash,setDash] = useState(true)
+
   const getIndexRandom = arr => Math.floor(Math.random() * arr.length)
   const getRandomColor = () => `hsl(${getRandomHSL(0,360)},${getRandomHSL(0,70)}%,${getRandomHSL(0,65)}%)`
 
@@ -19,6 +20,11 @@ function App() {
     setRandomColor(getRandomColor())
   }
 
+  const handleToggle = () => {
+
+    setDash(!isDash);
+  }
+
   function getRandomHSL(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
@@ -29,14 +35,20 @@ function App() {
     backgroundColor : randomColor
   }
 
+  console.log('Init DASH: '+isDash );
+
+
   return (
     <div className="App" style={backgorundObject}>
-      <div className='transition'></div>
+      <div className={isDash ? 'transition' : 'transition anim-trans'} style={backgorundObject}></div>
       <QuoteBox 
         randomQuote={randomQuote}
         randomColor={randomColor}
         getRandomAll={getRandomAll}
         setRandomColor={setRandomColor}
+        isDash={isDash}                   
+        setDash={setDash}
+
       />
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import QuoteBoxData from './QuoteBoxData'
 
 
-const QuoteBox = ({randomQuote,randomColor,getRandomAll}) => {
+const QuoteBox = ({randomQuote,randomColor,getRandomAll,isDash,setDash}) => {
 
     const colorObj={
         color: randomColor
@@ -12,6 +12,15 @@ const QuoteBox = ({randomQuote,randomColor,getRandomAll}) => {
         backgroundColor: randomColor
     }
 
+    const handleNext = ()=>{
+        if(isDash){
+        setDash(false)
+        setTimeout(() => {setDash(true)}, 3000)
+        setTimeout(() => {getRandomAll()}, 1400)
+        }
+    }   
+
+  
   return (
     <article className='card' style={colorObj} >
         <div className='marks'>
@@ -19,7 +28,7 @@ const QuoteBox = ({randomQuote,randomColor,getRandomAll}) => {
         </div>
         <QuoteBoxData randomQuote={randomQuote}/>
         <div className='nextIcon'>
-            <a onClick={getRandomAll} >
+            <a onClick={handleNext} >
                 <i style={backgroundObj} className='bx bxs-chevron-right' ></i>
             </a> 
         </div>
